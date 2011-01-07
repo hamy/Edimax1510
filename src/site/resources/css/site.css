@@ -1,0 +1,31 @@
+/********************
+ * Local Stylesheet *
+ ********************
+ *
+ * Changes w.r.t maven-base.css: wider nav bar.
+ */
+
+#leftColumn {
+ width: 200px;
+ float:left;
+}
+#bodyColumn {
+  margin-right: 1.5em;
+  margin-left: 227px;
+}
+table.jaextoDefaultHtmlLogAppender tr {
+  background-color: #ddf;
+}
+table.jaextoDefaultHtmlLogAppender {
+  border: 2px solid #aaf;
+}
+div.jaextoSnippet {
+  border: 2px solid #aaf;
+  background-color: #ffb;
+  padding: 12px;
+  margin: 0em 0px 0em 0px;
+}
+div.jaextoSnippet pre {
+  margin: 0px;
+  padding: 0px;
+}
