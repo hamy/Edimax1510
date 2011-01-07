@@ -5,7 +5,7 @@
 	<artifactId>edimax1510</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Edimax1510</name>
-	<description>Tinkering with the Edimax 1510 network camera</description>
+	<description>Tinkering with the Edimax 1510 JPEG/MJPEG network camera</description>
 	<build>
 		<plugins>
 			<plugin>
