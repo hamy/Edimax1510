@@ -1,3 +1,12 @@
 History
 
-   
+  [2011/01/04] Bought the Edimax 1510 camera at {{{http://www.edvneumann.de/} EDV Neumann }} 
+  
+  [2011/01/07] Started Guthub project {{https://github.com/hamy/Edimax1510/}}
+  
+  [2011/01/08] Replaced the initial firmware (v 1.34) by a more recent version (v. 1.39)
+               downloaded from the {{{http://www.edimax.com/} Edimax site }}
+  
+  [2011/01/08] Changed the <<admin>> password 
+  
+  []
