@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+  name="Edimax1510">
+  <bannerLeft>
+    <name>Edimax1510</name>
+    <!--
+    <src>images/logos/project-logo.png
+    </src> -->
+    <!--
+    <href>
+      http://${hamy_server_name}/Exercises/Java/Ex-Java-Bluetooth-Y2009/
+    </href> -->
+  </bannerLeft>
+   <publishDate
+    format="yyyy-MMMM-dd HH:mm:ss" />
+  <body>
+
+    <!-- breadcrumb nav -->
+    <links>
+       <item
+        name="Camera"
+        href="http://192.168.2.101/index.htm" />
+      <item
+        name="Githup"
+        href="https://github.com/hamy/Edimax1510/" />
+      <item
+        name="Edimax"
+        href="http://www.edimax.com/" />
+     </links>
+
+    <!-- side bar menu -->
+    <menu
+      name="About">
+      <item
+        name="Home"
+        href="index.html" />
+      <item
+        name="History"
+        href="history.html" />
+     </menu>
+
+ 
+    <!-- reports -->
+    ${reports}
+  </body>
+</project>
