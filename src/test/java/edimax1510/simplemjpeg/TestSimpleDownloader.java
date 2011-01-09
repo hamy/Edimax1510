@@ -1,5 +1,7 @@
 package edimax1510.simplemjpeg;
 
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -10,9 +12,22 @@ import java.net.URLConnection;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.imageio.ImageIO;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import com.google.zxing.BinaryBitmap;
+import com.google.zxing.ChecksumException;
+import com.google.zxing.FormatException;
+import com.google.zxing.LuminanceSource;
+import com.google.zxing.MultiFormatReader;
+import com.google.zxing.NotFoundException;
+import com.google.zxing.Reader;
+import com.google.zxing.Result;
+import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
+import com.google.zxing.common.HybridBinarizer;
 
 import edimax1510.AbstractEdimax1510TestCase;
 
@@ -90,11 +105,13 @@ public class TestSimpleDownloader extends AbstractEdimax1510TestCase {
 	}
 
 	@Test
-	public void download() throws IOException {
+	public void download() throws IOException, NotFoundException,
+			ChecksumException, FormatException {
 		String mn = debugEntering("download");
 		String line;
 		chunkType = ChunkType.INVALID;
 		Pattern p = Pattern.compile("^Content-Length:\\s+(\\d+)$");
+		int okCount = 0;
 
 		while (imageCount < MAX_IMAGE_COUNT) {
 			debug(mn, "old chunk type: ", chunkType);
@@ -147,8 +164,30 @@ public class TestSimpleDownloader extends AbstractEdimax1510TestCase {
 				debug(mn, "image #: ", imageCount);
 				File file = new File("/tmp/" + imageCount + ".jpg");
 				FileOutputStream fos = new FileOutputStream(file);
-				fos.write(baos.toByteArray());
+				byte[] ba = baos.toByteArray();
+				fos.write(ba);
+				InputStream bais = new ByteArrayInputStream(ba);
+				BufferedImage bi = ImageIO.read(bais);
+				debug(mn, "buffered image: ", bi);
+				bais.close();
+				baos.close();
 				fos.close();
+
+				LuminanceSource source = new BufferedImageLuminanceSource(bi);
+				BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(
+						source));
+				Reader reader = new MultiFormatReader();
+				try {
+					Result result = reader.decode(bitmap);
+					okCount++;
+					debug(mn, "result: ", result);
+					debug(mn, "ok count: ", okCount);
+					debug(mn, "text: ", result.getText());
+					debug(mn, "ts: ", result.getTimestamp());
+					debug(mn, "fmt: ", result.getBarcodeFormat());
+				} catch (NotFoundException nfe) {
+					debug(mn, "oops: ", nfe);
+				}
 				break;
 			case JPEG_DATA:
 				line = readLine();
