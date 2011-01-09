@@ -44,6 +44,16 @@
 			<version>1.6.1</version>
 			<type>jar</type>
 		</dependency>
+		<dependency>
+			<groupId>com.google.zxing</groupId>
+			<artifactId>core</artifactId>
+			<version>1.6-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.zxing</groupId>
+			<artifactId>javase</artifactId>
+			<version>1.6-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 
 </project>
