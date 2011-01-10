@@ -30,12 +30,14 @@ import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.HybridBinarizer;
 
 import edimax1510.AbstractEdimax1510TestCase;
+import static edimax1510.settings.CameraSettings20110110.*;
 
 import sun.misc.BASE64Encoder;
 
 public class TestSimpleDownloader extends AbstractEdimax1510TestCase {
 
-	private static final String PATH = "http://192.168.2.100/mjpg/video.mjpg";
+	private static final String PATH = "http://" + E1510_IP_ADDRESS
+			+ E1510_PATH_VIDEO_MJPEG;
 	private static final int MAX_IMAGE_COUNT = 100;
 
 	enum ChunkType {
@@ -72,8 +74,6 @@ public class TestSimpleDownloader extends AbstractEdimax1510TestCase {
 		}
 	}
 
-	private static final byte[] GUEST_CREDENTIALS = "guest:guest".getBytes();
-
 	@Before
 	public void setUp() throws Exception {
 		String mn = debugEntering("setUp");
@@ -82,7 +82,9 @@ public class TestSimpleDownloader extends AbstractEdimax1510TestCase {
 		URLConnection uc = url.openConnection();
 		debug(mn, "url con: ", uc);
 		BASE64Encoder encoder = new BASE64Encoder();
-		String encoded = encoder.encode(GUEST_CREDENTIALS);
+		byte[] credentials = (E1510_GUEST_ACCOUNT + ':' + E1510_GUEST_PASSWORD)
+				.getBytes();
+		String encoded = encoder.encode(credentials);
 		debug(mn, "encoded credentials: ", encoded);
 		uc.setRequestProperty("Authorization", "Basic " + encoded);
 		debug(mn, "url con: ", uc);
