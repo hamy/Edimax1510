@@ -6,6 +6,11 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Edimax1510</name>
 	<description>Tinkering with the Edimax 1510 JPEG/MJPEG network camera</description>
+	<scm>
+		<connection>scm:git:git://github.com/hamy/Edimax1510.git</connection>
+		<developerConnection>scm:git:git://github.com/hamy/Edimax1510.git</developerConnection>
+	</scm>
+
 	<build>
 		<plugins>
 			<plugin>
