@@ -1,0 +1,12 @@
+The HTTP Request Header Sent to the Camera
+ 
+-----
+  HTTP/1.1 200 OK<CRLF>
+  Server: GoAhead-Webs<CRLF>
+  Pragma: no-cache<CRLF>
+  Cache-Control: no-cache<CRLF>
+  Content-Type: multipart/x-mixed-replace; boundary="--myboundary"<CRLF>
+  <CRLF>
+-----
+  
+  Note: Actual camera requests authorization.

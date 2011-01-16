@@ -37,6 +37,12 @@
       <item
         name="History"
         href="history.html" />
+      <item
+        name="Eclipse TCP/IP Monitor"
+        href="eclipse-tcp-ip-monitor.html" />
+      <item
+        name="HTTP Request Header"
+        href="request-header.html" />
      </menu>
 
  

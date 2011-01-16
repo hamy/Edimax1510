@@ -1,0 +1,7 @@
+Using the Eclipse TCP/IP Monitor
+ 
+ The monitor allows tracing of the traffic between the browser and the camera. 
+ 
+ Menu: <<Window-\>Preferences-\>Run/Debug-\>TCP/IP Monitor>>
+ 
+[images/screenshots/eclipse-tcp-ip-monitor.png]   
