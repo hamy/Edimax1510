@@ -18,6 +18,7 @@ import javax.imageio.ImageIO;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.google.zxing.BinaryBitmap;
@@ -83,7 +84,7 @@ public class TestVideo extends AbstractEdimax1510TestCase {
 		debugLeaving(mn);
 	}
 
-	@Test
+	@Test @Ignore
 	public void download() throws IOException, NotFoundException,
 			ChecksumException, FormatException {
 		String mn = debugEntering("download");
