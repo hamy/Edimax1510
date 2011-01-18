@@ -1,12 +1,41 @@
 The HTTP Request Header Sent to the Camera
  
+ * Header Syntax
+ 
 -----
   HTTP/1.1 200 OK<CRLF>
   Server: GoAhead-Webs<CRLF>
   Pragma: no-cache<CRLF>
   Cache-Control: no-cache<CRLF>
-  Content-Type: multipart/x-mixed-replace; boundary="--myboundary"<CRLF>
+  Content-Type: multipart/x-mixed-replace; boundary=myboundary<CRLF>
   <CRLF>
 -----
   
   Note: Actual camera requests authorization.
+  
+* Protocol Sequence
+
+  * The clients sends a GET request.
+  
+  * The server reads the request header line by line. The end of the header is recognized by an
+    empty line.
+    
+  * The server sends a multipart response header that is ended by an empty line.
+  
+  * For each image, the following subsequence is sent by the server:
+  
+    * A boundary line starting with a double hyphen (e.g., "<<--myboundary>>").
+    
+    * A <<Content-Type>> line, value "<<image/jpeg>>".
+    
+    * A <<Content-Length>> line.
+    
+    * An empty line indicating the end of the subsequence header.
+    
+    * The JPEG image as byte sequence.
+    
+    * An empty line indicating the end of the subsequence.
+    
+    []
+   
+  []
