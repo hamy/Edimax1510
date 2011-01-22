@@ -1,6 +1,19 @@
+###############################
+# Files Excluded From GIT SCM #
+###############################
+
+# log files
 *.log
+
+# Maven artifact tree
 target/
+
+# Eclipse project descriptors
 .classpath
 .project
 .settings
+
+# other files
+lal
+lall
 

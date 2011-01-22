@@ -1,14 +1,25 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<parent>
+		<artifactId>Github-Master-POM</artifactId>
+		<groupId>Github-Master-POM</groupId>
+		<version>1.0.0</version>
+		<relativePath>../Github-Master-POM</relativePath>
+	</parent>
+
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>edimax1510</groupId>
 	<artifactId>edimax1510</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Edimax1510</name>
-	<description>Tinkering with the Edimax 1510 JPEG/MJPEG network camera</description>
+
+	<description>Tinkering with the Edimax 1510 JPEG/MJPEG network camera.</description>
+
 	<scm>
-		<connection>scm:git:git://github.com/hamy/Edimax1510.git</connection>
-		<developerConnection>scm:git:git://github.com/hamy/Edimax1510.git</developerConnection>
+		<connection>${hamy-scm-connection-base}/Edimax1510.git</connection>
+		<developerConnection>${hamy-scm-developer-connection-base}/Edimax1510.git</developerConnection>
+		<url>${hamy-scm-url-base}/Edimax1510</url>
 	</scm>
 
 	<build>
@@ -40,12 +51,13 @@
 					<dependency>
 						<groupId>org.apache.maven.scm</groupId>
 						<artifactId>maven-scm-provider-gitexe</artifactId>
-						 <version>1.4</version>  
+						<version>1.4</version>
 					</dependency>
 				</dependencies>
 			</plugin>
 		</plugins>
 	</build>
+
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -72,37 +84,36 @@
 		</dependency>
 	</dependencies>
 
- <reporting>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-site-plugin</artifactId>
-        <configuration>
-          <inputEncoding>UTF-8</inputEncoding>
-          <outputEncoding>UTF-8</outputEncoding>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-changelog-plugin</artifactId>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-site-plugin</artifactId>
+				<configuration>
+					<inputEncoding>UTF-8</inputEncoding>
+					<outputEncoding>UTF-8</outputEncoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-changelog-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins
         </groupId>
-        <artifactId>maven-surefire-report-plugin
+				<artifactId>maven-surefire-report-plugin
         </artifactId>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins
         </groupId>
-        <artifactId>maven-jxr-plugin</artifactId>
-        <configuration>
-          <linkJavadoc>true</linkJavadoc>
-          <javadocDir>target/site/apidocs</javadocDir>
-        </configuration>
-      </plugin>
-    </plugins>
-  </reporting>
-
+				<artifactId>maven-jxr-plugin</artifactId>
+				<configuration>
+					<linkJavadoc>true</linkJavadoc>
+					<javadocDir>target/site/apidocs</javadocDir>
+				</configuration>
+			</plugin>
+		</plugins>
+	</reporting>
 
 </project>
