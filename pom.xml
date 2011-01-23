@@ -5,7 +5,6 @@
 		<artifactId>Github-Master-POM</artifactId>
 		<groupId>Github-Master-POM</groupId>
 		<version>1.0.0</version>
-		<relativePath>../Github-Master-POM</relativePath>
 	</parent>
 
 	<modelVersion>4.0.0</modelVersion>
@@ -17,9 +16,9 @@
 	<description>Tinkering with the Edimax 1510 JPEG/MJPEG network camera.</description>
 
 	<scm>
-		<connection>${hamy-scm-connection-base}/Edimax1510.git</connection>
-		<developerConnection>${hamy-scm-developer-connection-base}/Edimax1510.git</developerConnection>
-		<url>${hamy-scm-url-base}/Edimax1510</url>
+		<connection>${hamyScmConnectionBase}/Edimax1510.git</connection>
+		<developerConnection>${hamyScmDeveloperConnectionBase}/Edimax1510.git</developerConnection>
+		<url>${hamyScmUrlBase}/Edimax1510</url>
 	</scm>
 
 	<build>

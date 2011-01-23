@@ -12,7 +12,7 @@
 		<!-- breadcrumb nav -->
 		<links>
 			<item name="Camera" href="http://192.168.2.201/index.htm" />
-			<item name="Githup" href="${project.scm.url}" />
+			<item name="Github" href="${project.scm.url}" />
 			<item name="Edimax" href="http://www.edimax.com/" />
 		</links>
 
