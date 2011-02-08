@@ -116,7 +116,7 @@ public class TestLoop extends AbstractEdimax1510TestCase {
 		int okCount = 0;
 
 		while (imageCount < MAX_IMAGE_COUNT) {
-			// debug(mn, "old chunk type: ", chunkType);
+			debug(mn, "old chunk type: ", chunkType);
 			switch (chunkType) {
 			case INVALID:
 				line = readLine();
@@ -136,11 +136,11 @@ public class TestLoop extends AbstractEdimax1510TestCase {
 				line = readLine();
 				Matcher m = p.matcher(line);
 				if (m.matches()) {
-					// debug(mn, "matching line: ", line);
+					debug(mn, "matching line: ", line);
 					String g = m.group(1);
-					// debug(mn, "group: ", g);
+					debug(mn, "group: ", g);
 					contentLength = Integer.parseInt(g);
-					// debug(mn, "content length: ", contentLength);
+					debug(mn, "content length: ", contentLength);
 					chunkType = (contentLength > 0) ? ChunkType.CONTEXT_LENGTH
 							: ChunkType.INVALID;
 				} else {
@@ -163,14 +163,14 @@ public class TestLoop extends AbstractEdimax1510TestCase {
 				}
 				chunkType = ChunkType.JPEG_DATA;
 				imageCount++;
-				// debug(mn, "image #: ", imageCount);
+				debug(mn, "image #: ", imageCount);
 				File file = new File("/tmp/" + imageCount + ".jpg");
 				FileOutputStream fos = new FileOutputStream(file);
 				byte[] ba = baos.toByteArray();
 				fos.write(ba);
 				InputStream bais = new ByteArrayInputStream(ba);
 				BufferedImage bi = ImageIO.read(bais);
-				// debug(mn, "buffered image: ", bi);
+				debug(mn, "buffered image: ", bi);
 				bais.close();
 				baos.close();
 				fos.close();
@@ -182,14 +182,14 @@ public class TestLoop extends AbstractEdimax1510TestCase {
 				try {
 					Result result = reader.decode(bitmap);
 					okCount++;
-					// debug(mn, "result: ", result);
-					// debug(mn, "ok count: ", okCount);
+					info(mn, "result: ", result);
+					debug(mn, "ok count: ", okCount);
 					debug(mn, "text: ", result.getText());
-					// debug(mn,result.getTimestamp(), "  ",
-					// result.getTimestamp());
-					// debug(mn, "fmt: ", result.getBarcodeFormat());
+					debug(mn, result.getTimestamp(), "  ",
+							result.getTimestamp());
+					debug(mn, "fmt: ", result.getBarcodeFormat());
 				} catch (NotFoundException nfe) {
-					debug(mn, "oops: ", nfe);
+					error(mn, "oops: ", nfe);
 				}
 				break;
 			case JPEG_DATA:
@@ -199,7 +199,7 @@ public class TestLoop extends AbstractEdimax1510TestCase {
 			case END_OF_DATA:
 				break;
 			}
-			//debug(mn, "new chunk type: ", chunkType);
+			debug(mn, "new chunk type: ", chunkType);
 		}
 		debugLeaving(mn);
 	}

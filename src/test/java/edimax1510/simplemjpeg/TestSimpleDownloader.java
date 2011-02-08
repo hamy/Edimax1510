@@ -38,7 +38,7 @@ public class TestSimpleDownloader extends AbstractEdimax1510TestCase {
 
 	private static final String PATH = "http://" + E1510_IP_ADDRESS
 			+ E1510_PATH_VIDEO_MJPEG;
-	private static final int MAX_IMAGE_COUNT = 100;
+	private static final int MAX_IMAGE_COUNT = 100000;
 
 	enum ChunkType {
 		INVALID, MYBOUNDARY, CONTENT_TYPE, CONTEXT_LENGTH, END_OF_HEADER, JPEG_DATA, END_OF_DATA
@@ -185,6 +185,7 @@ public class TestSimpleDownloader extends AbstractEdimax1510TestCase {
 					debug(mn, "result: ", result);
 					debug(mn, "ok count: ", okCount);
 					debug(mn, "text: ", result.getText());
+					System.out.println(System.currentTimeMillis() + " " + result.getText());
 					debug(mn, "ts: ", result.getTimestamp());
 					debug(mn, "fmt: ", result.getBarcodeFormat());
 				} catch (NotFoundException nfe) {

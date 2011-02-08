@@ -21,10 +21,26 @@ public abstract class AbstractEdimax1510TestCase {
 		logger = LoggerFactory.getLogger(getClass());
 	}
 
-	private void buildMessage(String mn, String mnDetails,
+	private void buildMessage(char level, String mn, String mnDetails,
 			Object... messageParts) {
-		if (!logger.isDebugEnabled())
-			return;
+		switch (level) {
+		case 'd':
+			if (!logger.isDebugEnabled())
+				return;
+			break;
+		case 'i':
+			if (!logger.isInfoEnabled())
+				return;
+			break;
+		case 'w':
+			if (!logger.isWarnEnabled())
+				return;
+			break;
+		case 'e':
+			if (!logger.isErrorEnabled())
+				return;
+			break;
+		}
 		StringBuilder sb = new StringBuilder();
 		sb.append('[');
 		sb.append(mn);
@@ -36,7 +52,20 @@ public abstract class AbstractEdimax1510TestCase {
 		for (Object messagePart : messageParts) {
 			sb.append(messagePart);
 		}
-		logger.debug(sb.toString());
+		switch (level) {
+		case 'd':
+			logger.debug(sb.toString());
+			break;
+		case 'i':
+			logger.info(sb.toString());
+			break;
+		case 'w':
+			logger.warn(sb.toString());
+			break;
+		case 'e':
+			logger.error(sb.toString());
+			break;
+		}
 	}
 
 	/**
@@ -49,7 +78,7 @@ public abstract class AbstractEdimax1510TestCase {
 	 * @return The method name.
 	 */
 	public String debugEntering(String mn, Object... messageParts) {
-		buildMessage(mn, "Entering", messageParts);
+		buildMessage('d', mn, "Entering", messageParts);
 		return mn;
 	}
 
@@ -62,7 +91,7 @@ public abstract class AbstractEdimax1510TestCase {
 	 *            The message details.
 	 */
 	public void debugLeaving(String mn, Object... messageParts) {
-		buildMessage(mn, "Leaving", messageParts);
+		buildMessage('d', mn, "Leaving", messageParts);
 	}
 
 	/**
@@ -74,6 +103,42 @@ public abstract class AbstractEdimax1510TestCase {
 	 *            The message details.
 	 */
 	public void debug(String mn, Object... messageParts) {
-		buildMessage(mn, null, messageParts);
+		buildMessage('d', mn, null, messageParts);
+	}
+
+	/**
+	 * Debug method.
+	 * 
+	 * @param mn
+	 *            The name of the method.
+	 * @param messageParts
+	 *            The message details.
+	 */
+	public void info(String mn, Object... messageParts) {
+		buildMessage('i', mn, null, messageParts);
+	}
+
+	/**
+	 * Debug method.
+	 * 
+	 * @param mn
+	 *            The name of the method.
+	 * @param messageParts
+	 *            The message details.
+	 */
+	public void warn(String mn, Object... messageParts) {
+		buildMessage('w', mn, null, messageParts);
+	}
+
+	/**
+	 * Debug method.
+	 * 
+	 * @param mn
+	 *            The name of the method.
+	 * @param messageParts
+	 *            The message details.
+	 */
+	public void error(String mn, Object... messageParts) {
+		buildMessage('e', mn, null, messageParts);
 	}
 }
